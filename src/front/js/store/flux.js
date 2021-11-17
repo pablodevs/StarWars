@@ -1,46 +1,81 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			message: null,
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			favorites: [],
+			characters: [],
+			planets: [],
+			vehicles: []
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
+			forceRender: () => setStore({}), // Force render without change data
 
-			getMessage: () => {
-				// fetching data from the backend
-				fetch(process.env.BACKEND_URL + "/api/hello")
-					.then(resp => resp.json())
-					.then(data => setStore({ message: data.message }))
-					.catch(error => console.log("Error loading message from backend", error));
-			},
-			changeColor: (index, color) => {
-				//get the store
+			addFav: (category, uid) => {
+				// Add likes to the Fav list
 				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
+				setStore({
+					favorites: [
+						...store.favorites,
+						{
+							category: category,
+							id: uid
+						}
+					]
 				});
 
-				//reset the global store
-				setStore({ demo: demo });
+				// Actualiza los likes
+				let storeAux = {};
+				storeAux[category] = store[category].map(element => {
+					if (element.uid === uid) {
+						element.liked = true;
+					}
+					return element;
+				});
+				setStore(storeAux);
+			},
+
+			removeFav: (category, uid) => {
+				// Remove likes from the Fav list
+				const store = getStore();
+				let position;
+				store.favorites.forEach((element, index) => {
+					if (element.category === category && element.id === uid) {
+						position = index;
+					}
+				});
+				store.favorites.splice(position, 1);
+				setStore({
+					favorites: [...store.favorites]
+				});
+
+				// Upload likes
+				let storeAux = {};
+				storeAux[category] = store[category].map(element => {
+					if (element.uid === uid) {
+						element.liked = false;
+					}
+					return element;
+				});
+				setStore(storeAux);
+			},
+
+			loadData: category => {
+				let endUrl = category === "characters" ? "people" : category;
+				fetch(`https://www.swapi.tech/api/${endUrl}/`, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+					.then(res => res.json())
+					.then(data => {
+						let storeAux = {};
+						storeAux[category] = data.results.map(e => {
+							e.liked = false;
+							e.category = category;
+							return e;
+						});
+						setStore(storeAux);
+					});
 			}
 		}
 	};

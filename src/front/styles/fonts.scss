@@ -1,0 +1,25 @@
+//  Search: DIN Next
+@import url('https://www.1001fonts.com/helvetica+arial+sans-serif+din-fonts.html?text=Hola');
+
+/*===== Headings Styles =====*/
+body {
+    font-family: DIN, Helvetica, Arial, sans-serif;
+}
+h1,h2,h3,h4,h5 {
+    color: $red;
+    text-transform: uppercase;
+}
+h2, h5 {
+    font-weight: 500;
+}
+
+h5 {
+    line-height: 1.15rem;
+}
+div.card-description p, .details-description p{
+    font-size: 0.85rem;
+    line-height: 1.1rem;
+}
+div.details-description p {
+    line-height: 1.3rem;
+}

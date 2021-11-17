@@ -1,3 +1,201 @@
-/* 
-    General Styles
-*/
+/*===== General styles import =====*/
+@import "./colors";
+@import "./fonts";
+
+/*===== Views styles import =====*/
+@import "./views/home";
+@import "./views/details";
+
+/*===== General =====*/
+*, *::before, *::after {
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+body {
+    color: #9E9E9E;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+p {
+    margin: 0;
+}
+.webpage {
+    position: relative;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: $blue
+}
+
+button.btn, .btn, a.btn-outline-info, .btn-outline-warning {
+    &:active, &:focus, &:focus-visible, &:active:focus {
+        box-shadow: none;
+    }
+}
+
+.row, .row > * {
+    margin: 0;
+    padding: 0;
+}
+
+.container, .container-fluid {
+    padding: 0;
+}
+
+/*===== Background =====*/
+.background {
+    background-image: url("../img/background.png");
+    background-repeat: repeat;
+    background-size: contain;
+    position: relative;
+    min-height: 100vh;
+    width: 100vw;
+    
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        background-color: #000000b8;
+    }
+}
+
+/*===== Navbar =====*/
+.nav-wrapper {
+    background-color: #000000e0;
+    border-bottom: 1px solid #077b924d;
+}
+.nav-link {
+    color: white;
+    width: 100%;
+    text-align: center;
+
+    &:hover {
+        color: $a-hover;
+    }
+    &:focus {
+        color: white;
+    }
+}
+@media screen and (max-width: 992px) {
+    .nav-link:hover {
+        background-color: $a-hover;
+        color: white;
+    }
+}
+.dropdown {
+    width: -moz-fit-content;
+}
+.dropdown-menu {
+    padding: 0;
+}
+.dropdown-toggle {
+    cursor: pointer;
+}
+.dropdown-item:hover {
+    background-color: $light-red;
+}
+.fav-link {
+    color: black;
+    &:hover {
+        color:white
+    }
+}
+.trash-button {
+    color: $red;
+    background: none;
+    border: none;
+    float: right;
+}
+.form-control:focus {
+    box-shadow: none;
+}
+
+.search-form {
+    position: relative;
+    @media screen and (min-width: 992px) { 
+        width: 236px;
+    }
+}
+
+.search-input {
+    padding-inline: 2rem;
+}
+.search-icon {
+    position: absolute;
+    background: none;
+    border: none;
+    left: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-left: 0.6rem;
+}
+.search-cross-btn {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    background: none;
+    border: none;
+    padding-right: 0.6rem;
+    text-align: center;
+    color: #9E9E9E;
+    font-size: 2rem;
+    line-height: 2rem;
+
+    &:hover {
+        color: black;
+    }
+}
+.autocomplete {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 38px;
+    overflow-y: hidden;
+    max-height: 192px;
+    width: 100%;
+    border-radius: 0.25rem;
+    background-color: white;
+}
+.autocomplete li {
+    list-style: none;
+    border-radius: 0.25rem;
+}
+.suggestion-link {
+    width: 100%;
+    display: block;
+    padding: 0.3rem 0.75rem;
+    cursor: default;
+    color: black;
+    &:hover, &:focus-visible {
+        background-color: #DDDDDD;
+        color: black;
+        outline: none;
+    }
+}
+.suggestion-active {
+    background-color: #DDDDDD;
+    color: black;
+    outline: none;
+}
+
+/* clears the 'X' from Internet Explorer */
+input.search-input[type=search]::-ms-clear,
+input.search-input[type=search]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0; 
+}
+/* clears the 'X' from Chrome */
+input.search-input[type="search"]::-webkit-search-decoration,
+input.search-input[type="search"]::-webkit-search-cancel-button,
+input.search-input[type="search"]::-webkit-search-results-button,
+input.search-input[type="search"]::-webkit-search-results-decoration {
+  display: none; 
+}
