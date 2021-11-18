@@ -1,0 +1,20 @@
+/*===== General styles import =====*/
+@import "../colors";
+@import "../fonts";
+
+.profile-container {
+    width: fit-content;
+    padding: 15px;
+}
+
+.profile-container ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.profile-container ul li {
+    display: flex;
+}
+.profile-container ul li span {
+    color: rgb(3, 158, 219);
+}

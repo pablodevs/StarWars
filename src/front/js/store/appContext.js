@@ -26,6 +26,10 @@ const injectContext = PassedComponent => {
 				state.actions.loadData("planets"); // render Planets
 				state.actions.loadData("vehicles"); // render Vehicles
 			}
+			if (localStorage.getItem["token"]) {
+				state.actions.forceLogin();
+			} // If user selected 'Remember me' he will be logged in
+			else state.actions.logout();
 		}, []);
 
 		useEffect(() => localStorage.setItem("store", JSON.stringify(state.store)));

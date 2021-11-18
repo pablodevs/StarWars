@@ -1,43 +1,50 @@
-import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React, { useContext } from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-
-import { Home } from "./views/home";
-import { Details } from "./views/details";
-import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Home } from "./views/home";
+import { Details } from "./views/details";
+// User views:
+import { Login } from "./views/login";
+import { Register } from "./views/register";
+import { Profile } from "./views/profile";
 
-//create your first component
+import injectContext, { Context } from "./store/appContext";
+
 const Layout = () => {
-	//the basename is used when your project is published in a subdirectory and not in the root of the domain
-	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
+	const { store, actions } = useContext(Context);
 
 	return (
-		<div>
+		<div className="page">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<div className="background">
-						<div className="webpage">
-							<Navbar />
-							<Switch>
-								<Route exact path="/">
-									<Home />
-								</Route>
-								<Route exact path="/details/:category/:uid">
-									<Details />
-								</Route>
-								<Route>
-									<div className="view">
-										<h5>404 - Page Not Found {/* Include Death star img */}</h5>
-									</div>
-								</Route>
-							</Switch>
-							<Footer />
-						</div>
-					</div>
+					<Navbar />
+					<Switch>
+						<Route exact path="/">
+							<Home />
+						</Route>
+						<Route exact path="/login">
+							{store.loggedIn ? <Redirect to="/" /> : <Login />}
+						</Route>
+						<Route exact path="/register">
+							{store.loggedIn ? <Redirect to="/" /> : <Register />}
+						</Route>
+						<Route exact path="/profile">
+							<Profile />
+						</Route>
+						<Route exact path="/details/:category/:uid">
+							<Details />
+						</Route>
+						<Route>
+							<div className="view">
+								<h5>404 - Page Not Found {/* Include Death star img */}</h5>
+							</div>
+						</Route>
+					</Switch>
+					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>
 		</div>

@@ -101,7 +101,7 @@ export const Navbar = () => {
 						<i className="fas fa-bars" style={{ color: "white", fontSize: "xx-large" }} />
 					</button>
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul className="flex-grow-1 navbar-nav me-auto mb-2 mb-lg-0">
+						<ul className="navbar-nav me-auto mb-2 mb-lg-0 px-3">
 							<li className="nav-item">
 								<a className="nav-link" href="#characters">
 									Characters
@@ -116,43 +116,6 @@ export const Navbar = () => {
 								<a className="nav-link" href="#vehicles">
 									Vehicles
 								</a>
-							</li>
-							<li className="nav-item w-100 d-flex justify-content-center">
-								<div className="dropdown">
-									<a className="nav-link dropdown-toggle" onClick={handleClickMenu}>
-										{`Favorites ${store.favorites.length}`}
-									</a>
-									<div className={`dropdown-menu ${state ? "show" : ""}`}>
-										{store.favorites.length > 0 ? (
-											store.favorites.map((elem, index) => (
-												<div
-													key={index}
-													className="dropdown-item d-flex"
-													style={{ width: "12em" }}>
-													<Link
-														onClick={resetHooks}
-														className="flex-grow-1 fav-link"
-														to={"/details/" + elem.category + "/" + elem.id}>
-														<span className="hola">{getName(elem.category, elem.id)}</span>
-													</Link>
-													<button className="trash-button">
-														<i
-															className="fas fa-trash"
-															onClick={() =>
-																actions.removeFav(
-																	store.favorites[index].category,
-																	store.favorites[index].id
-																)
-															}
-														/>
-													</button>
-												</div>
-											))
-										) : (
-											<div className="text-center">(empty)</div>
-										)}
-									</div>
-								</div>
 							</li>
 						</ul>
 						<form
@@ -192,6 +155,67 @@ export const Navbar = () => {
 								})}
 							</ul>
 						</form>
+						<div className="navbar-group">
+							{store.loggedIn ? (
+								<>
+									<div className="dropdown">
+										<a className="nav-link dropdown-toggle" onClick={handleClickMenu}>
+											{`Favorites ${store.favorites.length}`}
+										</a>
+										<div className={`dropdown-menu ${state ? "show" : ""}`}>
+											{store.favorites.length > 0 ? (
+												store.favorites.map((elem, index) => (
+													<div
+														key={index}
+														className="dropdown-item d-flex"
+														style={{ width: "12em" }}>
+														<Link
+															onClick={resetHooks}
+															className="flex-grow-1 fav-link"
+															to={"/details/" + elem.category + "/" + elem.id}>
+															<span className="hola">
+																{getName(elem.category, elem.id)}
+															</span>
+														</Link>
+														<button className="trash-button">
+															<i
+																className="fas fa-trash"
+																onClick={() =>
+																	actions.removeFav(
+																		store.favorites[index].category,
+																		store.favorites[index].id
+																	)
+																}
+															/>
+														</button>
+													</div>
+												))
+											) : (
+												<div className="text-center">(empty)</div>
+											)}
+										</div>
+									</div>
+									<Link
+										className="nav-link"
+										onClick={() => {
+											history.push("/profile");
+										}}>
+										Profile
+									</Link>
+									<Link
+										className="nav-link"
+										onClick={() => {
+											actions.logout();
+										}}>
+										Log out
+									</Link>
+								</>
+							) : (
+								<Link to="/login" className="nav-link">
+									Log in
+								</Link>
+							)}
+						</div>
 					</div>
 				</div>
 			</nav>

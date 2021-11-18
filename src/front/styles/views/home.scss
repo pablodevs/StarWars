@@ -4,7 +4,6 @@
 
 /*===== Home Styles =====*/
 .home-wrapper {
-    margin-bottom: -3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,91 +22,14 @@
     margin-bottom: 1.5rem;
 }
 
-/*===== Card Styles =====*/
-$card-boder-radius: 6px;
-
 .cards-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border: none;
     padding-bottom: 1.5rem;
-    margin-inline: -1rem;
+    margin-inline: -1.5rem;
     overflow-x: scroll;
     overflow-y: hidden;
     scrollbar-color: $a-hover #282727 ; // Firefox
-}
-.card {
-    min-width: 266px;
-    min-height: 351px;
-}
-.card-img-wrapper {
-    overflow: hidden;
-}
-.card-img-top {
-    border-top-left-radius: $card-boder-radius;
-    border-top-right-radius: $card-boder-radius;
-    transition: transform .5s ease;
-    -o-transition: transform .5s ease;
-    -ms-transition: transform .5s ease;
-    -moz-transition: transform .5s ease;
-    -webkit-transition: transform .5s ease;
-
-    &:hover {
-        transform: scale(1.05);
-        -o-transform: scale(1.05);
-        -ms-transform: scale(1.05);
-        -moz-transform: scale(1.05);
-        -webkit-transform: scale(1.05);
-        
-        transform-origin: center;
-        -o-transform-origin: center;
-        -ms-transform-origin: center;
-        -moz-transform-origin: center;
-        -webkit-transform-origin: center;
-    }
-}
-.card-title {
-    color: $light;
-
-    &:hover {
-    color: #DC3545;
-    }
-}
-.card-body, .card {
-    background-color: $gray;
-    border: none;
-    background-image: url("https://static-mh.content.disney.io/starwars/assets/shared/bg_hash_top-dca2c5ab1b2e.png");
-    background-size: 7px;
-    background-repeat: repeat-x;
-    background-position: top left;
-}
-div.card-body {
-    padding: 0.8rem;
-    border-top: 2px solid $border-red;
-    border-radius: 0 0 $card-boder-radius $card-boder-radius;
-}
-.card-description {
-    overflow-y: hidden;
-    height: 69px;
-    width: 100%;
-    margin-bottom: 0.7rem;
-
-    &::before {
-        content: "→";
-        float: right;
-        position: relative;
-        bottom: -67%;
-        width: 100%;
-        margin-left: -100%;
-        padding-right: 4px;
-        padding-bottom: 0.3em;
-        letter-spacing: 0.1em;
-        height: 30px;
-        color: transparent;
-        background-color: transparent;
-        background-image: -webkit-linear-gradient(bottom, $gray 4%, rgba(40, 39, 39, 0.9) 30%, rgba(40, 39, 39, 0));
-        background-image: linear-gradient(to top, $gray 4%, #282727e6 30%, #28272700);
-        left: 0%;
-    }
 }

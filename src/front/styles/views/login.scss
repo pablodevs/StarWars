@@ -1,0 +1,64 @@
+/*===== General styles import =====*/
+@import "../colors";
+@import "../fonts";
+
+$border-radius: 0.25rem;
+
+.login-form {
+    width: 370px;
+    padding: 15px;
+    border-radius: $border-radius;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+
+.login-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+.login-label {
+    margin-bottom: 8px;
+}
+.login-input {
+    border: 1px solid gray;
+    padding: 3px 7px;
+    outline: none;
+
+    &:hover, &:focus-visible {
+        border-color: rgb(0, 183, 255)    
+    }
+}
+
+.login-check-group {
+    display: flex;
+    justify-content: space-between;
+}
+.login-checkbox-label {
+    margin-left: 5px;
+    margin-bottom: 16px;
+}
+
+.login-input, .login-button {
+    border-radius: $border-radius;
+}
+
+.login-button {
+    width: 100%;
+    border: none;
+    background: $red;
+    padding: 0.3em;
+    color: white;
+    transition: 0.3s;
+
+    &:hover {
+        background: #a52835;    
+    }
+}
+
+.login-message {
+    text-align: center;
+    padding-top: 0.7rem;
+}
+.login-error, .login-message a {
+    color: $red;
+}

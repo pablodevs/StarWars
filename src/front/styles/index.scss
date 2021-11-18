@@ -16,18 +16,26 @@ body {
     color: #9E9E9E;
     line-height: 1.6;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 p {
     margin: 0;
 }
-.webpage {
-    position: relative;
-    height: 100%;
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
-
+.view {
+    height: 100%;
+    width: 100%;
+    margin-block: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 a {
     text-decoration: none;
-    color: $blue
 }
 
 button.btn, .btn, a.btn-outline-info, .btn-outline-warning {
@@ -45,18 +53,24 @@ button.btn, .btn, a.btn-outline-info, .btn-outline-warning {
     padding: 0;
 }
 
+.dflex-column {
+    display: flex;
+    flex-direction: column;
+}
 /*===== Background =====*/
-.background {
+#app {
     background-image: url("../img/background.png");
     background-repeat: repeat;
     background-size: contain;
-    position: relative;
     min-height: 100vh;
     width: 100vw;
+    position: absolute;
+    z-index: -2;
     
     &::before {
         content: "";
         position: absolute;
+        z-index: -1;
         top: 0px;
         right: 0px;
         bottom: 0px;
@@ -68,11 +82,13 @@ button.btn, .btn, a.btn-outline-info, .btn-outline-warning {
 /*===== Navbar =====*/
 .nav-wrapper {
     background-color: #000000e0;
-    border-bottom: 1px solid #077b924d;
+    border-bottom: 1px solid #dc354633;
+}
+.navbar-group {
+    display: flex;
 }
 .nav-link {
     color: white;
-    width: 100%;
     text-align: center;
 
     &:hover {
@@ -119,7 +135,7 @@ button.btn, .btn, a.btn-outline-info, .btn-outline-warning {
 .search-form {
     position: relative;
     @media screen and (min-width: 992px) { 
-        width: 236px;
+        min-width: 236px;
     }
 }
 

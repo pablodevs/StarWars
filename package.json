@@ -11,17 +11,13 @@
 		"build": "webpack --config webpack.prod.js"
 	},
 	"author": {
-		"name": "Alejandro Sanchez",
-		"url": "http://alesanchezr.com/"
+		"name": "Pablo Álamo",
+		"url": "https://github.com/peibol888/"
 	},
 	"contributors": [
 		{
 			"name": "Alejandro Sanchez",
-			"url": "http://alesanchezr.com/"
-		},
-		{
-			"name": "Ignacio Cordoba",
-			"url": "http://github.com/nachovz"
+			"url": "https://github.com/peibol888/"
 		}
 	],
 	"license": "ISC",

@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 import notfound from "../../img/notfound.png";
 
+import "../../styles/components/card.scss";
+
 export const Card = props => {
 	const { store, actions } = useContext(Context);
 
@@ -12,7 +14,7 @@ export const Card = props => {
 	};
 
 	return (
-		<div className="card mx-3">
+		<div className="card mx-4">
 			<div className="card-img-wrapper">
 				<Link to={"/details/" + props.category + "/" + props.ID}>
 					<img
@@ -28,7 +30,7 @@ export const Card = props => {
 			</div>
 			<div className="card-body">
 				<Link to={"/details/" + props.category + "/" + props.ID}>
-					<h5 className="card-title">{props.title}</h5>
+					<h4 className="card-title">{props.title}</h4>
 				</Link>
 				<div className="card-description">
 					<p>{props.cardContent}</p>
