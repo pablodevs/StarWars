@@ -23,7 +23,7 @@ Open license
 
 1) Remember to install the npm packages first:
 ```
-`$ brew install node@14 && brew unlink node && brew link node@14 && npm install`
+$ brew install node@14 && brew unlink node && brew link node@14 && npm install
 ```
 
 2) Build and Start coding!
