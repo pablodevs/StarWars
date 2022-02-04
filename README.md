@@ -21,6 +21,8 @@ Open license
 
 ### Manual Installation
 
+#### Front-End
+
 1) Remember to install the npm packages first:
 ```
 $ brew install node@14 && brew unlink node && brew link node@14 && npm install
@@ -33,6 +35,10 @@ Build the application for the first time...
 ```
 $ npm run start
 ```
+
+#### Back-End
+
+`$ pipenv cp .env.example .env && pipenv install && pipenv run upgrade && pipenv run start`
 
 ---
 Handcrafted with ❤ by [peibol888](https://github.com/peibol888)
