@@ -38,7 +38,9 @@ $ npm run start
 
 #### Back-End
 
-`$ pipenv cp .env.example .env && pipenv install && pipenv run upgrade && pipenv run start`
+```
+$ pipenv cp .env.example .env && pipenv install && pipenv run upgrade && pipenv run start
+```
 
 ---
 Handcrafted with ❤ by [peibol888](https://github.com/peibol888)
