@@ -30,8 +30,6 @@ $ brew install node@14 && brew unlink node && brew link node@14 && npm install
 
 2) Build and Start coding!
 
-Build the application for the first time...
-
 ```
 $ npm run start
 ```
